@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-xs-12 col-sm-4 text-center">
+        <h1><%= link_to restaurant.name, restaurant_path(restaurant) %></h1>
+        <h3>Category: <%= restaurant.category %></h3>
+        <p>Address: <%= restaurant.address %></p>
+        <p>Phone number: <%= restaurant.phone_number %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

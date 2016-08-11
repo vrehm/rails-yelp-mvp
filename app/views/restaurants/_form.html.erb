@@ -5,6 +5,7 @@
   <%= f.input :address %>
   <%= f.input :phone_number %>
   <%= f.input :category, collection: Restaurant::CATEGORIES, prompt: "Select a category" %>
+  <%= f.input :background_url %>
 
   <%= f.button :submit %>
 <% end %>

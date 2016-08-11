@@ -1,24 +1,36 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 text-center">
-        <h1><%= @restaurant.name %></h1>
-        <h3>Category: <%= @restaurant.category %></h3>
-        <p>Address: <%= @restaurant.address %></p>
-        <p>Phone number: <%= @restaurant.phone_number %></p>
-        <p><%= link_to 'Return to restaurants', restaurants_path, class: "btn btn-danger" %></p>
-        <p><%= link_to 'Create a review', new_restaurant_review_path(@restaurant), class: "btn btn-danger" %></p>
-        <h2>Reviews</h2>
-        <div class="flexbox">
-          <% reviews = @restaurant.reviews %>
-            <% reviews.each do |review| %>
-              <div id="review_content">
-                <%= review.content %>
-              </div>
-              <div id="review_rating">
-                <%= review.rating %>
-              </div>
+<div class="wrapper pad-cote">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-8">
+          <h1><%= @restaurant.name %></h1>
+          <h3>Category: <%= @restaurant.category %></h3>
+          <p>Address: <%= @restaurant.address %></p>
+          <p>Phone number: <%= @restaurant.phone_number %></p>
+          <h3>Reviews:</h3>
+          <ul class="list-unstyled">
+            <% @restaurant.reviews.each do |review| %>
+              <li>
+                <p>" <%= review.content %> "</p>
+                <li>
+                <% review.rating.times do %>
+                  <i class="fa fa-star"></i>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <i class="fa fa-star-o"></i>
+                <% end %>
+                </li>
+              </li>
+              <br>
             <% end %>
-        </div>
+          </ul>
+      </div>
+      <div class="col-xs-4">
+        <%= image_tag @restaurant.background_url, {class: "avatar-square-large"} %>
+        <p class="text-center padded">
+          <%= link_to 'Return to restaurants', restaurants_path, class: "btn btn-danger" %>
+          <%= link_to 'Create a review', new_restaurant_review_path(@restaurant), class: "btn btn-danger" %>
+        </p>
+      </div>
     </div>
   </div>
 </div>
